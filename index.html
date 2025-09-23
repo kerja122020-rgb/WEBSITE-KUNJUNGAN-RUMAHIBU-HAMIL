@@ -22,33 +22,62 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #3b82f6;
         }
-        .section-title {
-            color: #1e40af;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 0.5rem;
+        .danger-section {
+            border-left-color: #ef4444;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
         }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8">
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="container mx-auto px-4 max-w-4xl">
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-blue-800 mb-2">CHECKLIST KUNJUNGAN RUMAH</h1>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">CHECKLIST KUNJUNGAN RUMAH</h1>
             <h2 class="text-xl font-semibold text-blue-600">IBU HAMIL</h2>
-            <p class="text-gray-600 mt-2">Berikan tanda centang (√) jika YA dan tanda silang (X) jika TIDAK</p>
+            <p class="text-gray-600 mt-2">Lengkapi data di bawah ini dengan memberikan tanda centang (√) jika YA dan tanda silang (X) jika TIDAK</p>
         </div>
 
-        <form id="pregnancyForm" class="space-y-6">
-            <!-- Data Dasar -->
+        <form id="checklistForm" class="space-y-6">
+            <!-- Data Umum -->
             <div class="form-section">
-                <h3 class="section-title">Data Dasar</h3>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">1</span>
+                    Data Umum
+                </h3>
+                
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Desa</label>
+                        <select name="namaDesa" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="">Pilih Desa</option>
+                            <option value="Ganra">Ganra</option>
+                            <option value="Belo">Belo</option>
+                            <option value="Enrekeng">Enrekeng</option>
+                            <option value="Lompulle">Lompulle</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Posyandu</label>
+                        <input type="text" name="namaPosyandu" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Kader</label>
+                        <input type="text" name="namaKader" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Waktu Kunjungan</label>
-                        <select name="waktu_kunjungan" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <select name="waktuKunjungan" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             <option value="">Pilih Kunjungan</option>
                             <option value="Kunjungan 1">Kunjungan 1</option>
                             <option value="Kunjungan 2">Kunjungan 2</option>
@@ -58,21 +87,35 @@
                             <option value="Kunjungan 6">Kunjungan 6</option>
                         </select>
                     </div>
+                    
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Kunjungan</label>
-                        <input type="date" name="tanggal_kunjungan" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <input type="date" name="tanggalKunjungan" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
+                </div>
+            </div>
+
+            <!-- Data Ibu Hamil -->
+            <div class="form-section">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
+                    Data Ibu Hamil
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Nama</label>
-                        <input type="text" name="nama" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <input type="text" name="nama" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
+                    
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Lahir</label>
-                        <input type="date" name="tanggal_lahir" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <input type="date" name="tanggalLahir" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
+                    
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Kehamilan Anak Ke</label>
-                        <select name="kehamilan_ke" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <select name="kehamilanKe" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             <option value="">Pilih</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -83,370 +126,400 @@
                             <option value="7">7</option>
                         </select>
                     </div>
+                    
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Jarak Kehamilan (tahun)</label>
-                        <input type="number" name="jarak_kehamilan" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Jarak Kehamilan dengan Kehamilan Sebelumnya (tahun)</label>
+                        <input type="number" name="jarakKehamilan" min="0" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
                 </div>
             </div>
 
             <!-- Pemeriksaan Kehamilan -->
             <div class="form-section">
-                <h3 class="section-title">Pemeriksaan Kehamilan ke Tenaga Kesehatan</h3>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">3</span>
+                    Pemeriksaan Kehamilan ke Tenaga Kesehatan
+                </h3>
                 
                 <div class="space-y-4">
-                    <h4 class="font-medium text-gray-800">Trimester I (1 kali hingga 12 minggu)</h4>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <input type="date" name="k1_tanggal" placeholder="K1 Tanggal" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k1_tempat" placeholder="K1 Tempat" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k1_petugas" placeholder="K1 Petugas" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-800 mb-3">Trimester I (1 kali pada umur kehamilan hingga 12 minggu)</h4>
+                        <div class="grid md:grid-cols-3 gap-3">
+                            <input type="date" name="k1Tanggal" placeholder="K1 Tanggal" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <input type="text" name="k1Tempat" placeholder="K1 Tempat" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <input type="text" name="k1Petugas" placeholder="K1 Petugas" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
                     </div>
-
-                    <h4 class="font-medium text-gray-800">Trimester II (2 kali, 12-24 minggu)</h4>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <input type="date" name="k2_tanggal" placeholder="K2 Tanggal" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k2_tempat" placeholder="K2 Tempat" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k2_petugas" placeholder="K2 Petugas" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-800 mb-3">Trimester II (2 kali umur kehamilan 12-24 minggu)</h4>
+                        <div class="space-y-2">
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <input type="date" name="k2Tanggal" placeholder="K2 Tanggal" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k2Tempat" placeholder="K2 Tempat" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k2Petugas" placeholder="K2 Petugas" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <input type="date" name="k3Tanggal" placeholder="K3 Tanggal" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k3Tempat" placeholder="K3 Tempat" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k3Petugas" placeholder="K3 Petugas" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <input type="date" name="k3_tanggal" placeholder="K3 Tanggal" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k3_tempat" placeholder="K3 Tempat" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k3_petugas" placeholder="K3 Petugas" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                    </div>
-
-                    <h4 class="font-medium text-gray-800">Trimester III (3 kali, 24-40 minggu)</h4>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <input type="date" name="k4_tanggal" placeholder="K4 Tanggal" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k4_tempat" placeholder="K4 Tempat" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k4_petugas" placeholder="K4 Petugas" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <input type="date" name="k5_tanggal" placeholder="K5 Tanggal" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k5_tempat" placeholder="K5 Tempat" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k5_petugas" placeholder="K5 Petugas" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <input type="date" name="k6_tanggal" placeholder="K6 Tanggal" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k6_tempat" placeholder="K6 Tempat" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="k6_petugas" placeholder="K6 Petugas" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-800 mb-3">Trimester III (3 kali pada umur kehamilan 24-40 minggu)</h4>
+                        <div class="space-y-2">
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <input type="date" name="k4Tanggal" placeholder="K4 Tanggal" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k4Tempat" placeholder="K4 Tempat" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k4Petugas" placeholder="K4 Petugas" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <input type="date" name="k5Tanggal" placeholder="K5 Tanggal" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k5Tempat" placeholder="K5 Tempat" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k5Petugas" placeholder="K5 Petugas" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <input type="date" name="k6Tanggal" placeholder="K6 Tanggal" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k6Tempat" placeholder="K6 Tempat" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="k6Petugas" placeholder="K6 Petugas" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tablet Tambah Darah -->
+            <!-- Checklist Ya/Tidak -->
             <div class="form-section">
-                <h3 class="section-title">Tablet Tambah Darah (TTD) / MMS</h3>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">4</span>
+                    Checklist Kesehatan
+                </h3>
+                
                 <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Ada TTD/MMS</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="ttd_ada" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="ttd_ada" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-800 mb-3">Tablet Tambah Darah (TTD) / MMS</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Ada</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="radio" name="ttdAda" value="Ya" id="ttdAda_ya" class="text-blue-600">
+                                        <label for="ttdAda_ya" class="text-sm">Ya ✓</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="radio" name="ttdAda" value="Tidak" id="ttdAda_tidak" class="text-red-600">
+                                        <label for="ttdAda_tidak" class="text-sm">Tidak ✗</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Minum hari ini / 24 jam terakhir</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="radio" name="ttdMinum" value="Ya" id="ttdMinum_ya" class="text-blue-600">
+                                        <label for="ttdMinum_ya" class="text-sm">Ya ✓</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="radio" name="ttdMinum" value="Tidak" id="ttdMinum_tidak" class="text-red-600">
+                                        <label for="ttdMinum_tidak" class="text-sm">Tidak ✗</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Minum hari ini / 24 jam terakhir</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="ttd_minum" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="ttd_minum" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- LiLA dan PMT -->
-            <div class="form-section">
-                <h3 class="section-title">Status Gizi</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">LiLA < 23,5 cm</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="lila" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="lila" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">PMT untuk Bumil KEK</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="pmt" value="Ada" class="text-blue-600">
-                                <span>Ada (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="pmt" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kelas Ibu Hamil -->
-            <div class="form-section">
-                <h3 class="section-title">Kelas Ibu Hamil Terakhir</h3>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="date" name="kelas_tanggal" placeholder="Tanggal" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                    <input type="text" name="kelas_tempat" placeholder="Tempat" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                    <input type="text" name="kelas_pendamping" placeholder="Pendamping" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                    <div class="checkbox-group">
-                        <label class="checkbox-item">
-                            <input type="checkbox" name="tidak_ikut_kelas" value="Ya" class="text-blue-600">
-                            <span>Tidak Ikut</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Skrining Kesehatan Jiwa -->
-            <div class="form-section">
-                <h3 class="section-title">Skrining Kesehatan Jiwa</h3>
-                <div class="space-y-4">
                     <div class="grid md:grid-cols-2 gap-4">
-                        <input type="date" name="skrining_tanggal" placeholder="Tanggal Pemeriksaan" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="text" name="skrining_tempat" placeholder="Tempat Pemeriksaan" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Ada obat/Terapi</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="ada_obat" value="Ada" class="text-blue-600">
-                                <span>Ada (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="ada_obat" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">LiLA < 23,5 cm</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="radio" name="lila" value="Ya" id="lila_ya" class="text-blue-600">
+                                    <label for="lila_ya" class="text-sm">Ya ✓</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="lila" value="Tidak" id="lila_tidak" class="text-red-600">
+                                    <label for="lila_tidak" class="text-sm">Tidak ✗</label>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Minum Obat/Terapi teratur</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="minum_obat_teratur" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="minum_obat_teratur" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Perilaku -->
-            <div class="form-section">
-                <h3 class="section-title">Perilaku dan Gaya Hidup</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Isi piringku untuk ibu hamil</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="isi_piring" value="Sesuai" class="text-blue-600">
-                                <span>Sesuai (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="isi_piring" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">PMT untuk Bumil KEK</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="radio" name="pmt" value="Ada" id="pmt_ada" class="text-blue-600">
+                                    <label for="pmt_ada" class="text-sm">Ada ✓</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="pmt" value="Tidak" id="pmt_tidak" class="text-red-600">
+                                    <label for="pmt_tidak" class="text-sm">Tidak ✗</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Perilaku Merokok</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="merokok" value="Aktif" class="text-blue-600">
-                                <span>Aktif</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="merokok" value="Pasif" class="text-blue-600">
-                                <span>Pasif</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="merokok" value="Tidak" class="text-blue-600">
-                                <span>Tidak</span>
-                            </label>
+
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-800 mb-3">Mengikuti Kelas Ibu Hamil Terakhir</h4>
+                        <div class="grid md:grid-cols-4 gap-3 mb-3">
+                            <input type="date" name="kelasIbuTanggal" placeholder="Tanggal" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <input type="text" name="kelasIbuTempat" placeholder="Tempat" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <input type="text" name="kelasIbuPendamping" placeholder="Pendamping" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="kelasIbuTidakIkut" value="Tidak Ikut" id="kelasIbu_tidak" class="text-red-600">
+                                <label for="kelasIbu_tidak" class="text-sm">Tidak Ikut</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Konsumsi Alkohol/Obat terlarang/NAPZA</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="alkohol_napza" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="alkohol_napza" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-800 mb-3">Melakukan Skrining Kesehatan Jiwa</h4>
+                        <div class="space-y-3">
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <input type="date" name="skriningTanggal" placeholder="Tanggal Pemeriksaan" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="skriningTempat" placeholder="Tempat Pemeriksaan" class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Ada obat/Terapi</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="radio" name="skriningObat" value="Ada" id="skriningObat_ada" class="text-blue-600">
+                                        <label for="skriningObat_ada" class="text-sm">Ada ✓</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="radio" name="skriningObat" value="Tidak" id="skriningObat_tidak" class="text-red-600">
+                                        <label for="skriningObat_tidak" class="text-sm">Tidak ✗</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Minum Obat/Terapi teratur</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="radio" name="skriningTeratur" value="Ya" id="skriningTeratur_ya" class="text-blue-600">
+                                        <label for="skriningTeratur_ya" class="text-sm">Ya ✓</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="radio" name="skriningTeratur" value="Tidak" id="skriningTeratur_tidak" class="text-red-600">
+                                        <label for="skriningTeratur_tidak" class="text-sm">Tidak ✗</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Riwayat Korban Kekerasan</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="kekerasan" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="kekerasan" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Isi Piringku untuk Ibu Hamil</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="radio" name="isiPiring" value="Sesuai" id="isiPiring_sesuai" class="text-blue-600">
+                                    <label for="isiPiring_sesuai" class="text-sm">Sesuai ✓</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="isiPiring" value="Tidak" id="isiPiring_tidak" class="text-red-600">
+                                    <label for="isiPiring_tidak" class="text-sm">Tidak ✗</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Perilaku Merokok</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="radio" name="merokok" value="Aktif" id="merokok_aktif" class="text-red-600">
+                                    <label for="merokok_aktif" class="text-sm">Aktif</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="merokok" value="Pasif" id="merokok_pasif" class="text-yellow-600">
+                                    <label for="merokok_pasif" class="text-sm">Pasif</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="merokok" value="Tidak" id="merokok_tidak" class="text-blue-600">
+                                    <label for="merokok_tidak" class="text-sm">Tidak ✓</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Konsumsi Alkohol/Obat terlarang/NAPZA</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="radio" name="alkohol" value="Ya" id="alkohol_ya" class="text-red-600">
+                                    <label for="alkohol_ya" class="text-sm">Ya ✗</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="alkohol" value="Tidak" id="alkohol_tidak" class="text-blue-600">
+                                    <label for="alkohol_tidak" class="text-sm">Tidak ✓</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Riwayat Korban Kekerasan</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="radio" name="kekerasan" value="Ya" id="kekerasan_ya" class="text-red-600">
+                                    <label for="kekerasan_ya" class="text-sm">Ya ✗</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="kekerasan" value="Tidak" id="kekerasan_tidak" class="text-blue-600">
+                                    <label for="kekerasan_tidak" class="text-sm">Tidak ✓</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-lg">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Pemberian Edukasi/Rujukan Nakes</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="edukasi_rujukan" value="Edukasi" class="text-blue-600">
-                                <span>Edukasi</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="edukasi_rujukan" value="Rujuk" class="text-blue-600">
-                                <span>Rujuk</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="edukasi" value="Edukasi" id="edukasi_edukasi" class="text-blue-600">
+                                <label for="edukasi_edukasi" class="text-sm">Edukasi ✓</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="edukasi" value="Rujuk" id="edukasi_rujuk" class="text-yellow-600">
+                                <label for="edukasi_rujuk" class="text-sm">Rujuk</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Tanda Bahaya -->
-            <div class="form-section">
-                <h3 class="section-title">Tanda Bahaya</h3>
-                <div class="space-y-4">
-                    <div>
+            <div class="form-section danger-section">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">⚠</span>
+                    Tanda Bahaya
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-red-50 p-4 rounded-lg">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Demam Lebih dari 2 hari</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="demam" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="demam" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="demam" value="Ya" id="demam_ya" class="text-red-600">
+                                <label for="demam_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="demam" value="Tidak" id="demam_tidak" class="text-blue-600">
+                                <label for="demam_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="bg-red-50 p-4 rounded-lg">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Pusing/Sakit kepala berat</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="pusing" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="pusing" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="pusing" value="Ya" id="pusing_ya" class="text-red-600">
+                                <label for="pusing_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="pusing" value="Tidak" id="pusing_tidak" class="text-blue-600">
+                                <label for="pusing_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="bg-red-50 p-4 rounded-lg">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Sulit Tidur/Cemas Berlebih</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="cemas" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="cemas" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="cemas" value="Ya" id="cemas_ya" class="text-red-600">
+                                <label for="cemas_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="cemas" value="Tidak" id="cemas_tidak" class="text-blue-600">
+                                <label for="cemas_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Risiko TB Batuk Lebih dari 2 minggu atau kontak serumah dengan penderita TB</label>
+
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Risiko TB Batuk >2 minggu atau kontak serumah dengan penderita TB</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="tb_batuk" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="tb_batuk" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="tb" value="Ya" id="tb_ya" class="text-red-600">
+                                <label for="tb_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="tb" value="Tidak" id="tb_tidak" class="text-blue-600">
+                                <label for="tb_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Gerakan bayi tidak ada atau kurang dari 10x dalam 12 jam untuk kehamilan 25 minggu ke atas</label>
+
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Gerakan bayi tidak ada atau <10x dalam 12 jam (kehamilan ≥25 minggu)</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="gerakan_bayi" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="gerakan_bayi" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="gerakanBayi" value="Ya" id="gerakanBayi_ya" class="text-red-600">
+                                <label for="gerakanBayi_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="gerakanBayi" value="Tidak" id="gerakanBayi_tidak" class="text-blue-600">
+                                <label for="gerakanBayi_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="bg-red-50 p-4 rounded-lg">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Nyeri perut hebat</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="nyeri_perut" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="nyeri_perut" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="nyeriPerut" value="Ya" id="nyeriPerut_ya" class="text-red-600">
+                                <label for="nyeriPerut_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="nyeriPerut" value="Tidak" id="nyeriPerut_tidak" class="text-blue-600">
+                                <label for="nyeriPerut_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="bg-red-50 p-4 rounded-lg">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Keluar cairan dari jalan lahir sangat banyak atau berbau</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="cairan_berbau" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="cairan_berbau" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="cairanLahir" value="Ya" id="cairanLahir_ya" class="text-red-600">
+                                <label for="cairanLahir_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="cairanLahir" value="Tidak" id="cairanLahir_tidak" class="text-blue-600">
+                                <label for="cairanLahir_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="bg-red-50 p-4 rounded-lg">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Sakit saat kencing atau keluar keputihan atau gatal di daerah kemaluan</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="sakit_kencing" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="sakit_kencing" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="sakitKencing" value="Ya" id="sakitKencing_ya" class="text-red-600">
+                                <label for="sakitKencing_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="sakitKencing" value="Tidak" id="sakitKencing_tidak" class="text-blue-600">
+                                <label for="sakitKencing_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="bg-red-50 p-4 rounded-lg">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Diare Berulang</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="radio" name="diare" value="Ya" class="text-blue-600">
-                                <span>Ya (√)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="radio" name="diare" value="Tidak" class="text-blue-600">
-                                <span>Tidak (X)</span>
-                            </label>
+                            <div class="checkbox-item">
+                                <input type="radio" name="diare" value="Ya" id="diare_ya" class="text-red-600">
+                                <label for="diare_ya" class="text-sm">Ya ⚠</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="diare" value="Tidak" id="diare_tidak" class="text-blue-600">
+                                <label for="diare_tidak" class="text-sm">Tidak ✓</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -454,83 +527,105 @@
 
             <!-- Catatan -->
             <div class="form-section">
-                <h3 class="section-title">Catatan</h3>
-                <textarea name="catatan" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Tulis catatan tambahan di sini..."></textarea>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">📝</span>
+                    Catatan
+                </h3>
+                <textarea name="catatan" rows="4" placeholder="Tulis catatan tambahan di sini..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
             </div>
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300 shadow-lg">
-                    📋 Kirim Data ke Spreadsheet
+                <button type="submit" class="submit-btn text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg">
+                    📤 Kirim Data ke Spreadsheet
                 </button>
             </div>
-
-            <!-- Status Message -->
-            <div id="statusMessage" class="hidden text-center p-4 rounded-lg"></div>
         </form>
+
+        <!-- Status Message -->
+        <div id="statusMessage" class="hidden mt-6 p-4 rounded-lg text-center font-medium"></div>
     </div>
 
     <script>
         // Google Apps Script Web App URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwlYgzdkxFgCHu621ZbPkb7RrLHYYH_yZeQ-VZGBTODjTKilJvh5lkfJH7FFSckeOEvYA/exec';
-
-        document.getElementById('pregnancyForm').addEventListener('submit', async function(e) {
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydSUnJRh_Mav0eW2oeTYGviPDUtqnM0kWXDYBkh1kUJVcQGtdG5dUOEf2ejEJQDS3_ag/exec';
+        
+        document.getElementById('checklistForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const statusDiv = document.getElementById('statusMessage');
             const submitBtn = e.target.querySelector('button[type="submit"]');
+            const statusMessage = document.getElementById('statusMessage');
             
             // Show loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML = '⏳ Mengirim data...';
-            statusDiv.className = 'text-center p-4 rounded-lg bg-blue-100 text-blue-800';
-            statusDiv.textContent = 'Sedang mengirim data ke spreadsheet...';
-            statusDiv.classList.remove('hidden');
-
+            statusMessage.className = 'mt-6 p-4 rounded-lg text-center font-medium bg-blue-100 text-blue-800';
+            statusMessage.textContent = 'Sedang mengirim data ke spreadsheet...';
+            statusMessage.classList.remove('hidden');
+            
             try {
                 // Collect form data
-                const formData = new FormData(this);
+                const formData = new FormData(e.target);
                 const data = {};
                 
                 // Convert FormData to regular object
                 for (let [key, value] of formData.entries()) {
                     data[key] = value;
                 }
-
+                
                 // Add timestamp
                 data.timestamp = new Date().toLocaleString('id-ID');
-
+                
                 // Send to Google Apps Script
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
+                    mode: 'no-cors', // Required for Google Apps Script
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data)
                 });
-
-                // Success message
-                statusDiv.className = 'text-center p-4 rounded-lg bg-green-100 text-green-800';
-                statusDiv.innerHTML = '✅ Data berhasil dikirim ke spreadsheet!<br>Form akan direset dalam 3 detik...';
                 
-                // Reset form after 3 seconds
-                setTimeout(() => {
-                    this.reset();
-                    statusDiv.classList.add('hidden');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '📋 Kirim Data ke Spreadsheet';
-                }, 3000);
-
+                // Show success message
+                statusMessage.className = 'mt-6 p-4 rounded-lg text-center font-medium bg-green-100 text-green-800';
+                statusMessage.innerHTML = '✅ Data berhasil dikirim ke spreadsheet!<br>Terima kasih atas laporan kunjungan rumah Anda.';
+                
+                // Reset form
+                e.target.reset();
+                
             } catch (error) {
                 console.error('Error:', error);
-                statusDiv.className = 'text-center p-4 rounded-lg bg-red-100 text-red-800';
-                statusDiv.textContent = '❌ Terjadi kesalahan saat mengirim data. Silakan coba lagi.';
-                
+                statusMessage.className = 'mt-6 p-4 rounded-lg text-center font-medium bg-red-100 text-red-800';
+                statusMessage.innerHTML = '❌ Terjadi kesalahan saat mengirim data.<br>Silakan coba lagi atau hubungi administrator.';
+            } finally {
+                // Reset button
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '📋 Kirim Data ke Spreadsheet';
+                submitBtn.innerHTML = '📤 Kirim Data ke Spreadsheet';
             }
         });
+
+        // Auto-save to localStorage (optional)
+        const form = document.getElementById('checklistForm');
+        const inputs = form.querySelectorAll('input, select, textarea');
+        
+        inputs.forEach(input => {
+            // Load saved data
+            const savedValue = localStorage.getItem(`checklist_${input.name}`);
+            if (savedValue && input.type !== 'radio') {
+                input.value = savedValue;
+            } else if (savedValue && input.type === 'radio' && input.value === savedValue) {
+                input.checked = true;
+            }
+            
+            // Save data on change
+            input.addEventListener('change', function() {
+                if (this.type === 'radio') {
+                    localStorage.setItem(`checklist_${this.name}`, this.value);
+                } else {
+                    localStorage.setItem(`checklist_${this.name}`, this.value);
+                }
+            });
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'981f5116f45afd2d',t:'MTc1ODM1MDI3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9838565211dcfdaf',t:'MTc1ODYxMjYzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
